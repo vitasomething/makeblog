@@ -1,0 +1,9 @@
+title: my shitty blog generator/ssg i wrote in bash and sed should be working now!!
+subtitle: route 29 (pokemon heartgold/soulsilver)
+song: https://vgmtreasurechest.com/soundtracks/pokemon-heartgold-and-soulsilver-music-super-complete/vwmjaxdpdy/1-09.%20Route%2029.mp3
+
+i can now write any document in plaintext and it'll work :333
+i can specific if i want something to be a title, subtitle, image, text, link, or song by just adding "title: " infront of it or whatever :333
+well actually for text i dont have to add anything infront since thats kinda the default.
+also for songs thas just a thing ur supposed to do once since it like autoplays.
+link: (https://github.com/vitasomething/makeblog) i put it up on github for anyone imterested!! :3

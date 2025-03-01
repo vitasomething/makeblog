@@ -28,13 +28,15 @@ sed -ie 's|^<p class="text" >title: |<p class="text title" >|' thingies/$1.tmp
 sed -ie 's|^<p class="text" >subtitle: |<p class="text subtitle" >|' thingies/$1.tmp
 sed -ie 's|^<p class="text" >image: |<img class="center" src="/images/|' thingies/$1.tmp
 sed -ie 's|^<p class="text" >song: |<audio id="music" autoplay><source src="|' thingies/$1.tmp
+sed -i 's|^<p class="text" >link: (|<a class="text" href="|' thingies/$1.tmp
 
 sed -ie '/^<p class="text" >/ s|$|</p>|' thingies/$1.tmp
-
 sed -ie '/^<p class="text title" >/ s|$|</p>|' thingies/$1.tmp
 sed -ie '/^<p class="text subtitle" >/ s|$|</p>|' thingies/$1.tmp
 sed -ie '/^<img class="center" src="\/images\// s|$|">|' thingies/$1.tmp
 sed -ie '/^<audio id="music" autoplay><source src="/ s|$|" type="audio/mpeg"></audio>|' thingies/$1.tmp
+sed -i '/^<a class="text" href="/ s|) |">|' thingies/$1.tmp
+sed -i '/^<a class="text" href="/ s|$|</a>|' thingies/$1.tmp
 
 sed -ie 's|^|\t|' thingies/$1.tmp
 
