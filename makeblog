@@ -1,7 +1,28 @@
 #!/usr/bin/env bash
+
+BLOG="blogs/txt/$1"
+DATE=$(date +%d.%m.%y)
+
 [[ $1 == "" ]] && echo "u have to input a file!!" && exit
 
-sed -e 's|^|<p class="text" >|' $1 > thingies/$1.tmp
+cat thingies/top.html > blogs/blog.html
+
+sed -e 's|^title: ||' $BLOG > thingies/blog_middle.tmp0
+
+sed -n '1p' thingies/blog_middle.tmp0 > thingies/blog_middle.tmp1
+sed -ie "/^/ s/\$/ (${DATE})/" thingies/blog_middle.tmp1
+
+sed -e "s|^|<a href='' class='text' >|" thingies/blog_middle.tmp1 > thingies/blog_middle.tmp2
+sed -ie "s|^<a href=''|<a href='html/blogs/${1}.html'|" thingies/blog_middle.tmp2
+sed -ie 's|$|</a>|' thingies/blog_middle.tmp2
+echo "<p></p>" >> thingies/blog_middle.tmp2
+sed -ie 's|^|\t|' thingies/blog_middle.tmp2
+
+cat thingies/blog_middle.tmp2 >> thingies/blog_middle.html
+cat thingies/blog_middle.html >> blogs/blog.html
+cat thingies/bottom.html >> blogs/blog.html
+
+sed -e 's|^|<p class="text" >|' $BLOG > thingies/$1.tmp
 
 sed -ie 's|^<p class="text" >title: |<p class="text title" >|' thingies/$1.tmp
 sed -ie 's|^<p class="text" >subtitle: |<p class="text subtitle" >|' thingies/$1.tmp
@@ -17,8 +38,8 @@ sed -ie '/^<audio id="music" autoplay><source src="/ s|$|" type="audio/mpeg"></a
 
 sed -ie 's|^|\t|' thingies/$1.tmp
 
-cat thingies/top.html > $1.html
-cat thingies/$1.tmp >> $1.html
-cat thingies/bottom.html >> $1.html
+cat thingies/top.html > blogs/$1.html
+cat thingies/$1.tmp >> blogs/$1.html
+cat thingies/bottom.html >> blogs/$1.html
 
-rm thingies/$1.tmp
+rm thingies/*.tmp*
