@@ -13,7 +13,7 @@ sed -n '1p' thingies/blog_middle.tmp0 > thingies/blog_middle.tmp1
 sed -ie "/^/ s/\$/ (${DATE})/" thingies/blog_middle.tmp1
 
 sed -e "s|^|<a href='' class='text' >|" thingies/blog_middle.tmp1 > thingies/blog_middle.tmp2
-sed -ie "s|^<a href=''|<a href='html/blogs/${1}.html'|" thingies/blog_middle.tmp2
+sed -ie "s|^<a href=''|<a href='/html/blogs/${1}.html'|" thingies/blog_middle.tmp2
 sed -ie 's|$|</a>|' thingies/blog_middle.tmp2
 echo "<p></p>" >> thingies/blog_middle.tmp2
 sed -ie 's|^|\t|' thingies/blog_middle.tmp2
