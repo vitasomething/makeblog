@@ -5,6 +5,8 @@ DATE=$(date +%d.%m.%y)
 
 [[ $1 == "" ]] && echo "u have to input a file!!" && exit
 
+mv $1 blogs/txt/
+
 cat thingies/top.html > blogs/blog.html
 
 sed -e 's|^title: ||' $BLOG > thingies/blog_middle.tmp0
